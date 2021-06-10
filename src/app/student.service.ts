@@ -108,17 +108,23 @@ export class StudentService {
 
   /* GET heroes whose name contains search term */
   searchStudents(term: string): Observable<Student[]> {
+    //1
     if (!term.trim()) {
       // if not search term, return empty hero array.
+      //1
       return of([]);
+      //1
     }
+    //1
     return this.http.get<Student[]>(`${this.studentUrl}/?name=${term}`).pipe(
       tap(x => x.length ?
         this.log(`found students matching "${term}"`) :
         this.log(`no students matching "${term}"`)),
       catchError(this.handleError<Student[]>('searchStudents', []))
     );
+    //1
   }
+  //1
   /* 
   *AUXILIAR METHODS
   */
